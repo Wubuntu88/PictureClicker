@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */; };
+		BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */; };
+		BEF1BAF01C8E83AE00B537BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */; };
+		BEF1BAF21C8E83AE00B537BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */; };
+		BEF1BAF51C8E83AE00B537BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAF31C8E83AE00B537BC /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureClicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEF1BAEF1C8E83AE00B537BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEF1BAF41C8E83AE00B537BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BEF1BAF61C8E83AE00B537BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEF1BAE41C8E83AE00B537BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BEF1BADE1C8E83AD00B537BC = {
+			isa = PBXGroup;
+			children = (
+				BEF1BAE91C8E83AE00B537BC /* PictureClicker */,
+				BEF1BAE81C8E83AE00B537BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BEF1BAE81C8E83AE00B537BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEF1BAE91C8E83AE00B537BC /* PictureClicker */ = {
+			isa = PBXGroup;
+			children = (
+				BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */,
+				BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */,
+				BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */,
+				BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */,
+				BEF1BAF31C8E83AE00B537BC /* LaunchScreen.storyboard */,
+				BEF1BAF61C8E83AE00B537BC /* Info.plist */,
+			);
+			path = PictureClicker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEF1BAE61C8E83AE00B537BC /* PictureClicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEF1BAF91C8E83AE00B537BC /* Build configuration list for PBXNativeTarget "PictureClicker" */;
+			buildPhases = (
+				BEF1BAE31C8E83AE00B537BC /* Sources */,
+				BEF1BAE41C8E83AE00B537BC /* Frameworks */,
+				BEF1BAE51C8E83AE00B537BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PictureClicker;
+			productName = PictureClicker;
+			productReference = BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEF1BADF1C8E83AE00B537BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "William Edward Gillespie";
+				TargetAttributes = {
+					BEF1BAE61C8E83AE00B537BC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = BEF1BAE21C8E83AE00B537BC /* Build configuration list for PBXProject "PictureClicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BEF1BADE1C8E83AD00B537BC;
+			productRefGroup = BEF1BAE81C8E83AE00B537BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEF1BAE61C8E83AE00B537BC /* PictureClicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEF1BAE51C8E83AE00B537BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEF1BAF51C8E83AE00B537BC /* LaunchScreen.storyboard in Resources */,
+				BEF1BAF21C8E83AE00B537BC /* Assets.xcassets in Resources */,
+				BEF1BAF01C8E83AE00B537BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEF1BAE31C8E83AE00B537BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */,
+				BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEF1BAEF1C8E83AE00B537BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEF1BAF31C8E83AE00B537BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEF1BAF41C8E83AE00B537BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEF1BAF71C8E83AE00B537BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BEF1BAF81C8E83AE00B537BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEF1BAFA1C8E83AE00B537BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PictureClicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.EasternMichiganUniversity.WilliamGillespie.PictureClicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BEF1BAFB1C8E83AE00B537BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PictureClicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.EasternMichiganUniversity.WilliamGillespie.PictureClicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEF1BAE21C8E83AE00B537BC /* Build configuration list for PBXProject "PictureClicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEF1BAF71C8E83AE00B537BC /* Debug */,
+				BEF1BAF81C8E83AE00B537BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEF1BAF91C8E83AE00B537BC /* Build configuration list for PBXNativeTarget "PictureClicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEF1BAFA1C8E83AE00B537BC /* Debug */,
+				BEF1BAFB1C8E83AE00B537BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEF1BADF1C8E83AE00B537BC /* Project object */;
+}
