@@ -7,3 +7,31 @@
 //
 
 import Foundation
+import UIKit
+
+
+class UserLoginViewController: UIViewController {
+    override func viewDidLoad() {
+        print("hello world");
+    }
+    
+    @IBAction func Login(sender: AnyObject) {
+        
+    }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+    }
+    
+    /*
+     This method allows for the SingleStockView to unwind to this ViewController, which makes the transition fast.
+     */
+    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    }
+    
+    
+  
+
+}
