@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         if let db:FMDatabase = createDatabase(){
             
             //testAddUsers(db)
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             
             
         }
-        
+        */
 
     }
 
