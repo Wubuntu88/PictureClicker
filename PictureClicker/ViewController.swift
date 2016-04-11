@@ -13,19 +13,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        if let db:FMDatabase = createDatabase(){
-            
-            //testAddUsers(db)
-            //testSelectFromUser(db)
-            
-            //testAddPicture(db)
-            //testSelectFromPicture(db)
-            
-            
-        }
-        */
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +25,7 @@ class ViewController: UIViewController {
     func createDatabase() -> FMDatabase? {
         let db:FMDatabase = FMDatabase(path: nil)
         if(db.open()){
-            let createUserRelation = "create table user (id text primary key not null, hashed_password text, salt date, credits int);"
+            let createUserRelation = "create table user (id text primary key not null, password text, credits int);"
             let createPictureRelation = "create table picture(pic_id integer primary key autoincrement, pic_name text, file_name text);"
             db.executeStatements(createUserRelation);
             db.executeStatements(createPictureRelation)
@@ -51,17 +38,10 @@ class ViewController: UIViewController {
         CODE for adding users, and testing the adding of users and selecting them to see if it works
     */
     func addUser(userName:String, password:String, db:FMDatabase) -> Bool {
-        let date = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         
-        let salt:String = formatter.stringFromDate(date)
-        
-        let insert = "insert into user(id, hashed_password, salt, credits) values(?, ?, ?, ?);"
+        let insert = "insert into user(id, hashed_password, credits) values(?, ?, ?);"
         let startingCredits = 20
-        let values = [userName, password, salt, startingCredits]
+        let values = [userName, password, startingCredits]
         do{
             try db.executeUpdate(insert, values: values as [AnyObject])
         }catch{
@@ -70,6 +50,7 @@ class ViewController: UIViewController {
         }
         return true
     }
+    
     func testAddUsers(db:FMDatabase){
         addUser("Will", password: "12345", db: db)
         addUser("Cade", password: "54321", db: db)
@@ -85,11 +66,9 @@ class ViewController: UIViewController {
         let resultSet:FMResultSet? = try? db.executeQuery(select, values: [])
         while(resultSet != nil && resultSet!.next() == true){
             let name:String = resultSet!.stringForColumnIndex(0)
-            
             let pswd:String = resultSet!.stringForColumnIndex(1)
-            let salt:String = resultSet!.stringForColumnIndex(2)
-            let credits:Int32 = resultSet!.intForColumnIndex(3)
-            print("name: \(name), pswd: \(pswd), salt: \(salt), credits: \(credits)")
+            let credits:Int32 = resultSet!.intForColumnIndex(2)
+            print("name: \(name), pswd: \(pswd), credits: \(credits)")
         }
     }
     
