@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BE083E6F1CBA07A700987C9E /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E6E1CBA07A700987C9E /* UserLoginViewController.swift */; };
+		BE083E711CBB05F700987C9E /* PicDbWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E701CBB05F700987C9E /* PicDbWrapper.swift */; };
+		BE083E731CBB0B6B00987C9E /* UserPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E721CBB0B6B00987C9E /* UserPicturesViewController.swift */; };
+		BE083E7F1CBB241300987C9E /* Pictures in Resources */ = {isa = PBXBuildFile; fileRef = BE083E7E1CBB241300987C9E /* Pictures */; };
 		BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */; };
 		BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */; };
 		BEF1BAF01C8E83AE00B537BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		BE083E6E1CBA07A700987C9E /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		BE083E701CBB05F700987C9E /* PicDbWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicDbWrapper.swift; sourceTree = "<group>"; };
+		BE083E721CBB0B6B00987C9E /* UserPicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPicturesViewController.swift; sourceTree = "<group>"; };
+		BE083E7E1CBB241300987C9E /* Pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pictures; sourceTree = "<group>"; };
 		BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureClicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 		BEF1BADE1C8E83AD00B537BC = {
 			isa = PBXGroup;
 			children = (
+				BE083E7E1CBB241300987C9E /* Pictures */,
 				BEF1BB2F1C8E9AE700B537BC /* FMDB */,
 				BEF1BAFC1C8E854600B537BC /* libsqlite3.0.tbd */,
 				BEF1BB2B1C8E95FE00B537BC /* fmdb */,
@@ -86,7 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */,
+				BE083E701CBB05F700987C9E /* PicDbWrapper.swift */,
 				BE083E6E1CBA07A700987C9E /* UserLoginViewController.swift */,
+				BE083E721CBB0B6B00987C9E /* UserPicturesViewController.swift */,
 				BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */,
 				BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */,
 				BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */,
@@ -174,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE083E7F1CBB241300987C9E /* Pictures in Resources */,
 				BEF1BB2C1C8E95FE00B537BC /* fmdb in Resources */,
 				BEF1BAF51C8E83AE00B537BC /* LaunchScreen.storyboard in Resources */,
 				BEF1BB421C8E9AF600B537BC /* Info.plist in Resources */,
@@ -192,7 +202,9 @@
 			files = (
 				BEF1BB3D1C8E9AF600B537BC /* FMDatabase.m in Sources */,
 				BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */,
+				BE083E731CBB0B6B00987C9E /* UserPicturesViewController.swift in Sources */,
 				BEF1BB411C8E9AF600B537BC /* FMResultSet.m in Sources */,
+				BE083E711CBB05F700987C9E /* PicDbWrapper.swift in Sources */,
 				BEF1BB3F1C8E9AF600B537BC /* FMDatabasePool.m in Sources */,
 				BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */,
 				BEF1BB3E1C8E9AF600B537BC /* FMDatabaseAdditions.m in Sources */,
