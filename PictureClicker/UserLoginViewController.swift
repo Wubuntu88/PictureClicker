@@ -17,6 +17,9 @@ class UserLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db.testAddUsers()
+        db.addAllPictures()
+        //db.insertPictureOwningInstance(pictureId: 5, username: "Will")
+        //db.testAddPictureOwningInstances()
         //testSelectFromUser(db!)
             
         //testAddPicture(db!)
