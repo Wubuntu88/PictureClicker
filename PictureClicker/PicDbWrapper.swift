@@ -20,20 +20,32 @@ class PicDbWrapper{
     func createDatabase() -> FMDatabase? {
         let db:FMDatabase = FMDatabase(path: nil)
         if(db.open()){
-            let createUserRelation = "create table user(username text primary key not null, password text, credits int);"
+            let createUserRelation = ["create table user(",
+                                      "username text primary key not null, ",
+                                      "password text, ",
+                                      "credits int);"].reduce("", combine: +)
             /* PICTURE*/
-            let createPictureRelation = "create table picture(picture_id integer primary key autoincrement, picture_name text, file_name text);"
+            let createPictureRelation = ["create table picture(",
+                                         "picture_id integer primary key autoincrement, ",
+                                         "picture_name text, ",
+                                         "file_name text);"].reduce("", combine: +)
             
             if let success = try? db.executeUpdate("PRAGMA foreign_keys = YES", values: []) {
                 print("success: \(success)")
             }
-            let createPictureOwningIntanceRelation = "create table picture_owning_instance(pic_id integer, picture_owner text, FOREIGN KEY(pic_id) REFERENCES picture(picture_id), FOREIGN KEY(picture_owner) REFERENCES user(username));"
+            let createPictureOwningIntanceRelation = ["create table picture_owning_instance(",
+                        "pic_id integer, ",
+                        "picture_owner text, ",
+                        "FOREIGN KEY(pic_id) REFERENCES picture(picture_id), ",
+                        "FOREIGN KEY(picture_owner) REFERENCES user(username));"].reduce("", combine: +)
+            /*
             let createPurchaseRelation = ["create table purchase(",
                         "pic_id integer, ",
                         "username text, ",
                         "date text,",
                         "FOREIGN KEY(pic_id) REFERENCES picture(picture_id)",
                         "FOREIGN KEY(username) REFERENCES user(username));"].reduce("", combine: +)
+             */
             let createStoreItemsRelation = ["create table store_items(",
                         "pic_id integer, ",
                         "price integer, ",
@@ -48,7 +60,7 @@ class PicDbWrapper{
             db.executeStatements(createUserRelation);
             db.executeStatements(createPictureRelation)
             db.executeStatements(createPictureOwningIntanceRelation)
-            db.executeStatements(createPurchaseRelation)
+            //db.executeStatements(createPurchaseRelation)
             db.executeStatements(createStoreItemsRelation)
             db.executeStatements(createClickInstanceRelation)
             return db
@@ -91,11 +103,13 @@ class PicDbWrapper{
     }
     
     func insertPictureOwningInstance(pictureId picId:Int, username:String){
+        /*
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
         let date = NSDate()
         let str = formatter.stringFromDate(date)
         print(str)
+        */
         let insert:String = "insert into picture_owning_instance(pic_id, picture_owner) values(?, ?)"
         let values = [picId, username]
         do{
@@ -103,8 +117,9 @@ class PicDbWrapper{
         }catch{
             print("execute failed");
         }
-        
     }
+    
+    
     
     func testAddPictureOwningInstances(){
         //add for Will
@@ -149,7 +164,28 @@ class PicDbWrapper{
         }
     }
     
-    
+    func fetchPictureNames(user: String) -> [String]?{
+        var picFiles:[String] = [String]()
+        let select:String = ["select file_name ",
+                             "from picture, picture_owning_instance, user ",
+                            "where username = \"\(user)\" AND ",
+                            "picture_owner = username AND ",
+                            "pic_id = picture_id"].reduce("", combine: +);
+        if let resultSet:FMResultSet? = try? db!.executeQuery(select, values: []){
+            print("there was result set\n");
+            while(resultSet != nil && resultSet!.next() == true){
+                if let strToAdd:String = resultSet?.stringForColumnIndex(0) {
+                    print("item: \(strToAdd)")
+                    picFiles.append(strToAdd)
+                }else{
+                    return nil;
+                }
+            }
+            return picFiles
+        }else{
+            return nil;
+        }
+    }
     
     func testSelectFromUser() {
         let select:String = "select * from user";
@@ -187,13 +223,6 @@ class PicDbWrapper{
             let fileName:String = resultSet!.stringForColumnIndex(2)
             print("id: \(id), name: \(name), fileName: \(fileName)")
         }
-    }
-    
-    func testAddPicture() {
-        addPicture("probe")
-        addPicture("zergling")
-        addPicture("hadoop")
-        addPicture("Chico")
     }
 }
 
