@@ -153,38 +153,86 @@ class PicDbWrapper{
                 print("add picture failed");
             }
         }
-        let select:String = "select * from picture";
-        let resultSet:FMResultSet? = try? db!.executeQuery(select, values: [])
-        while(resultSet != nil && resultSet!.next() == true){
-            //let name:String = resultSet!.stringForColumnIndex(0)
-            let id:Int32 = resultSet!.intForColumnIndex(0)
-            let name:String = resultSet!.stringForColumnIndex(1)
-            let filename:String = resultSet!.stringForColumnIndex(2)
-            print("id: \(id), name: \(name), filename: \(filename)")
-        }
+        //testSelectFromPicture()
     }
     
-    func fetchPictureNames(user: String) -> [String]?{
-        var picFiles:[String] = [String]()
-        let select:String = ["select file_name ",
+    /*
+     * @return an array of tuples:[(Int, String, String)]
+     * tup[0]: picture id
+     * tup[1]: picture name
+     * tup[2]: picture file name
+     */
+    func fetchPictureData(user username: String) -> [(Int, String, String)]?{
+        var picFiles:[(Int, String, String)] = [(Int, String, String)]()
+        let select:String = ["select picture_id, picture_name, file_name ",
                              "from picture, picture_owning_instance, user ",
-                            "where username = \"\(user)\" AND ",
+                            "where username = \"\(username)\" AND ",
                             "picture_owner = username AND ",
                             "pic_id = picture_id"].reduce("", combine: +);
         if let resultSet:FMResultSet? = try? db!.executeQuery(select, values: []){
-            print("there was result set\n");
             while(resultSet != nil && resultSet!.next() == true){
-                if let strToAdd:String = resultSet?.stringForColumnIndex(0) {
-                    print("item: \(strToAdd)")
-                    picFiles.append(strToAdd)
-                }else{
-                    return nil;
-                }
+                let pic_id:Int = Int(resultSet!.intForColumnIndex(0))
+                let pic_name:String = resultSet!.stringForColumnIndex(1)
+                let pic_file_name:String = resultSet!.stringForColumnIndex(2)
+                let tup:(Int, String, String) = (pic_id, pic_name, pic_file_name)
+                picFiles.append(tup)
             }
             return picFiles
-        }else{
-            return nil;
         }
+        return nil
+    }
+    
+    func fetchStoreData() -> [(String, String, Int)]? {//picture name, file name, price
+        var storeData:[(String, String, Int)] = [(String, String, Int)]()
+        let select  = ["select picture_name, file_name, price ",
+                        "from picture, store_items ",
+                        "where picture_id = pic_id;"].reduce("", combine: +)
+        if let resultSet:FMResultSet? = try? db!.executeQuery(select, values:[]){
+            while(resultSet != nil && resultSet!.next() == true){
+                let pic_name = resultSet!.stringForColumnIndex(0)
+                let file_name = resultSet!.stringForColumnIndex(1)
+                let price = Int(resultSet!.intForColumnIndex(2))
+                let tup:(String, String, Int) = (pic_name, file_name, price)
+                storeData.append(tup)
+            }
+            return storeData
+        }
+        return nil
+    }
+    
+    func createStore(){
+        let storeDict:Dictionary<String, Int> = ["eevee":2, "ghost":2, "hadoop":3,
+                                  "hellbat":1, "jigglypuff":4, "marauder":2,
+                                  "marine":1, "piplup":4, "probe":2,
+                                  "roach":1, "stalker":3, "thor":3,
+                                  "ultralisk":3, "zealot":1, "zergling":1,
+                                  "zerglingPikachu":5]
+        for (name, price) in storeDict {
+            let success = addStoreItem(name, price: price)
+            let message = success ? "\(name) successfully added to pictures table." : "could not add \(name) to pictures table."
+            print(message)
+        }
+    }
+    
+    func addStoreItem(itemName: String, price: Int) -> Bool {
+        let select = "select picture_id from picture where picture_name=\"\(itemName)\""
+        let resultSet:FMResultSet? = try? db!.executeQuery(select, values: [])
+        if resultSet != nil && resultSet!.next() == true {
+            let pic_id:Int = Int(resultSet!.intForColumnIndex(0))
+            let insert = "insert into store_items(pic_id, price) values(?, ?)"
+            do{
+                try db!.executeUpdate(insert, values: [pic_id, price])
+                return true
+            }catch{
+                print("add store item failed");
+                return false
+            }
+        }
+        return false
+    }
+    
+    func makePurchase(user user_name: String, item item_name:String){
+        //TODO
     }
     
     func testSelectFromUser() {
