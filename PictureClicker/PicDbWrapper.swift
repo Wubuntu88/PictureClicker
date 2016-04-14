@@ -16,7 +16,6 @@ class PicDbWrapper{
         db = createDatabase()
     }
     
-    
     func createDatabase() -> FMDatabase? {
         let db:FMDatabase = FMDatabase(path: nil)
         if(db.open()){
@@ -38,14 +37,6 @@ class PicDbWrapper{
                         "picture_owner text, ",
                         "FOREIGN KEY(pic_id) REFERENCES picture(picture_id), ",
                         "FOREIGN KEY(picture_owner) REFERENCES user(username));"].reduce("", combine: +)
-            /*
-            let createPurchaseRelation = ["create table purchase(",
-                        "pic_id integer, ",
-                        "username text, ",
-                        "date text,",
-                        "FOREIGN KEY(pic_id) REFERENCES picture(picture_id)",
-                        "FOREIGN KEY(username) REFERENCES user(username));"].reduce("", combine: +)
-             */
             let createStoreItemsRelation = ["create table store_items(",
                         "pic_id integer, ",
                         "price integer, ",
@@ -60,7 +51,6 @@ class PicDbWrapper{
             db.executeStatements(createUserRelation);
             db.executeStatements(createPictureRelation)
             db.executeStatements(createPictureOwningIntanceRelation)
-            //db.executeStatements(createPurchaseRelation)
             db.executeStatements(createStoreItemsRelation)
             db.executeStatements(createClickInstanceRelation)
             return db
@@ -72,7 +62,7 @@ class PicDbWrapper{
      */
     func addUser(userName:String, password:String) -> Bool {
         let insert = "insert into user(username, password, credits) values(?, ?, ?);"
-        let startingCredits = 20
+        let startingCredits = 5//I changed to 2 from 20
         let values = [userName, password, startingCredits]
         do{
             try db!.executeUpdate(insert, values: values as [AnyObject])
@@ -103,13 +93,6 @@ class PicDbWrapper{
     }
     
     func insertPictureOwningInstance(pictureId picId:Int, username:String){
-        /*
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
-        let date = NSDate()
-        let str = formatter.stringFromDate(date)
-        print(str)
-        */
         let insert:String = "insert into picture_owning_instance(pic_id, picture_owner) values(?, ?)"
         let values = [picId, username]
         do{
@@ -153,7 +136,6 @@ class PicDbWrapper{
                 print("add picture failed");
             }
         }
-        //testSelectFromPicture()
     }
     
     /*
@@ -231,10 +213,6 @@ class PicDbWrapper{
         return false
     }
     
-    func makePurchase(user user_name: String, item item_name:String){
-        //TODO
-    }
-    
     func testSelectFromUser() {
         let select:String = "select * from user";
         let resultSet:FMResultSet? = try? db!.executeQuery(select, values: [])
@@ -272,5 +250,118 @@ class PicDbWrapper{
             print("id: \(id), name: \(name), fileName: \(fileName)")
         }
     }
+    
+    func userHasPicture(user username:String, picture_name pic_name:String)->Bool{
+        let select = ["select * ",
+                      "from user, picture, picture_owning_instance ",
+                      "where picture_name = \"\(pic_name)\" AND ",
+                      "picture_id = pic_id AND ",
+                        "picture_owner=\"\(username)\""].reduce("", combine: +)
+        let resultSet:FMResultSet? = try? db!.executeQuery(select, values: [])
+        while(resultSet != nil && resultSet!.next() == true){
+            return true
+        }
+        return false
+    }
+    
+    func userHasEnoughCreditsForPicture(user username:String, picture_name pic_name:String) -> Bool {
+        let selectCredits = ["select credits ",
+                       "from user ",
+                       "where username=\"\(username)\""].reduce("", combine: +)
+        let creditsResultSet:FMResultSet? = try? db!.executeQuery(selectCredits, values: [])
+        
+        let selectPrice = ["select price ",
+                            "from store_items, picture ",
+                            "where pic_id = picture_id AND ",
+                            "picture_name=\"\(pic_name)\""].reduce("", combine: +)
+        let priceResultSet:FMResultSet? = try? db!.executeQuery(selectPrice, values: [])
+        
+        if creditsResultSet != nil && creditsResultSet!.next() == true &&
+            priceResultSet != nil && priceResultSet!.next() == true {
+            let userCredits:Int32? = creditsResultSet?.intForColumn("credits")
+            let picturePrice:Int32? = priceResultSet?.intForColumn("price")
+            print("user credits: \(userCredits!)")
+            print("pic price: \(picturePrice!)")
+            if userCredits != nil && picturePrice != nil {
+                if userCredits! >= picturePrice! {
+                    print("user has enough")
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func creditsForUser(user username:String) -> Int{
+        let selectCredits = ["select credits ",
+            "from user ",
+            "where username=\"\(username)\""].reduce("", combine: +)
+        let creditsResultSet:FMResultSet? = try? db!.executeQuery(selectCredits, values: [])
+        if creditsResultSet != nil && creditsResultSet!.next() == true {
+            return Int(creditsResultSet!.intForColumn("credits"))
+        }else{
+            return -1
+        }
+    }
+    
+    func makePicturePurchaseForUser(user username:String, picture_name pic_name:String) -> Bool {
+        //must get the picture id for the item name
+        let select_pic_id = ["select picture_id ",
+                            "from picture ",
+                            "where picture_name = \"\(pic_name)\""].reduce("", combine: +)
+        let pic_id_result_set:FMResultSet? = try? db!.executeQuery(select_pic_id, values: [])
+        
+        var pic_id:Int = 0
+        if pic_id_result_set != nil && pic_id_result_set!.next() {
+            pic_id = Int(pic_id_result_set!.intForColumn("picture_id"))
+        }
+        
+        let insert = "insert into picture_owning_instance(pic_id, picture_owner) values(?, ?)"
+        let values:[AnyObject] = [pic_id, username]
+        do{
+            try db!.executeUpdate(insert, values: values)
+            //now I must decrement the number of credits for the user
+            let selectPrice = ["select price ",
+                "from store_items, picture ",
+                "where pic_id = picture_id AND ",
+                "picture_name=\"\(pic_name)\""].reduce("", combine: +)
+            let price_result_set:FMResultSet? = try? db!.executeQuery(selectPrice, values: [])
+            if price_result_set != nil && price_result_set!.next(){
+                let price = Int((price_result_set?.intForColumn("price"))!)
+                //now must decrement credits for the user
+                let update = ["update user ",
+                              "set credits=credits-\(price) ",
+                              "where username=\"\(username)\""].reduce("", combine: +)
+                try! db!.executeUpdate(update, values: [])
+            }
+            return true
+        }catch{
+            print("add picture failed");
+            return false
+        }
+    }
+    
+    //must add the add click instance for user and picture
+    
+    //must check for when the user can click again
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
