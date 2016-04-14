@@ -55,7 +55,6 @@ class UserLoginViewController: UIViewController {
         if segue.identifier == "LoginToPicturesSegue" {
             if let destination = segue.destinationViewController as? UINavigationController{
                 if let dest = destination.topViewController as? UserPicturesViewController{
-                    print("top view was user pics")
                     dest.username = username
                     dest.db = db
                 }
