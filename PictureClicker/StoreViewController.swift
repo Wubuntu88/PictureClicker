@@ -70,6 +70,12 @@ class StoreTableViewController: UITableViewController {
             }
         }
     }
+    @IBAction func unwindToStoreVC(segue: UIStoryboardSegue) {
+        pictureData = db!.fetchPictureData(user: username!)
+        storeData = db!.fetchStoreData()
+        self.tableView.reloadData()
+    }
+    
 }
 
 
