@@ -13,8 +13,8 @@ class UserPicturesViewController: UITableViewController {
     
     var username:String?
     var db:PicDbWrapper?
-    //let pictureNames:[String] = ["Pictures/probe.jpg", "Pictures/stalker.jpeg",  "Pictures/zealot.jpg", "Pictures/zerglingPikachu.jpg", "Pictures/ultralisk.png", "Pictures/thor.png", "Pictures/roach.png", "Pictures/piplup.png", "Pictures/marine.jpeg", "Pictures/marauder.jpg", "Pictures/jigglypuff.png", "Pictures/hellbat.png", "Pictures/zergling.png", "Pictures/hadoop.png", "Pictures/ghost.jpeg", "Pictures/eevee.png"]
-    var pictureFiles:[String]?
+    var pictureData:[(Int, String, String)]?//id, name, filename
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +27,10 @@ class UserPicturesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(db != nil && username != nil){
-            if pictureFiles == nil {
-                pictureFiles = db!.fetchPictureNames(username!)
+            if pictureData == nil {
+                pictureData = db!.fetchPictureData(user: username!)
             }
-            return pictureFiles!.count
+            return pictureData!.count
         }else{
             return 0;
         }
@@ -38,11 +38,37 @@ class UserPicturesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("genericCell")!
-        if let image:UIImage = UIImage.init(named: pictureFiles![indexPath.row]){
+        if let image:UIImage = UIImage.init(named: pictureData![indexPath.row].2){
             cell.imageView?.image = image
         }
+        let name:String = pictureData![indexPath.row].1
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = ""
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "LibraryToStoreSegue" {
+            if let dest = segue.destinationViewController as? StoreTableViewController{
+                dest.username = username
+                dest.db = db
+            }
+        }
+    }
+    
+    @IBAction func unwindToUserPicturesVC(segue: UIStoryboardSegue) {
     }
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
