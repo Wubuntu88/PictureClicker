@@ -142,6 +142,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="RLd-Sc-bA1" kind="show" identifier="LibraryToClickSegue" id="W6A-YG-PNX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -223,7 +226,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DI-Ab-hLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Al9-c5-cMj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="418"/>
+            <point key="canvasLocation" x="1257" y="71"/>
+        </scene>
+        <!--Picture Clicker View Controller-->
+        <scene sceneID="XeP-eO-y3u">
+            <objects>
+                <viewController id="RLd-Sc-bA1" customClass="PictureClickerViewController" customModule="PictureClicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xA5-Kd-bkO"/>
+                        <viewControllerLayoutGuide type="bottom" id="T0U-jh-uin"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DlK-Hj-vmg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picture Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EM-9y-ZeD">
+                                <rect key="frame" x="248" y="559" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CzK-dg-gU6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="450"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GYF-JB-2Ge" appends="YES" id="1RI-z1-DBD"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-xd-qrE">
+                                <rect key="frame" x="274" y="522" width="53" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="puJ-xd-qrE" firstAttribute="top" secondItem="CzK-dg-gU6" secondAttribute="bottom" constant="8" symbolic="YES" id="0lj-Cm-PjQ"/>
+                            <constraint firstItem="CzK-dg-gU6" firstAttribute="centerX" secondItem="puJ-xd-qrE" secondAttribute="centerX" id="2WR-u1-bin"/>
+                            <constraint firstAttribute="bottom" secondItem="3EM-9y-ZeD" secondAttribute="bottom" constant="20" symbolic="YES" id="6pd-dV-H91"/>
+                            <constraint firstItem="3EM-9y-ZeD" firstAttribute="top" secondItem="puJ-xd-qrE" secondAttribute="bottom" constant="8" symbolic="YES" id="BQv-RV-DkH"/>
+                            <constraint firstItem="puJ-xd-qrE" firstAttribute="centerX" secondItem="3EM-9y-ZeD" secondAttribute="centerX" id="SVR-Qf-pDs"/>
+                            <constraint firstItem="CzK-dg-gU6" firstAttribute="leading" secondItem="DlK-Hj-vmg" secondAttribute="leading" id="f1S-0O-BYB"/>
+                            <constraint firstAttribute="trailing" secondItem="CzK-dg-gU6" secondAttribute="trailing" id="hUS-Fg-btV"/>
+                            <constraint firstItem="CzK-dg-gU6" firstAttribute="top" secondItem="xA5-Kd-bkO" secondAttribute="bottom" id="ois-6o-B6s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countdownUntilNextClick" destination="puJ-xd-qrE" id="5rT-NX-R30"/>
+                        <outlet property="itemDescription" destination="3EM-9y-ZeD" id="zvx-Iu-LLs"/>
+                        <outlet property="itemImage" destination="CzK-dg-gU6" id="2WA-oN-5P8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ug1-p2-SIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GYF-JB-2Ge">
+                    <connections>
+                        <action selector="tappedOnPicture:" destination="RLd-Sc-bA1" id="qqD-dH-1Ap"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1297" y="870"/>
         </scene>
         <!--Make Purchase View Controller-->
         <scene sceneID="Njv-jr-TdZ">
@@ -237,12 +300,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NpF-Ns-HL2">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NpF-Ns-HL2">
                                 <rect key="frame" x="250" y="551" width="100" height="41"/>
+                                <color key="backgroundColor" red="0.3088944571646644" green="0.85899999999999999" blue="0.31132472548415047" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Purchase"/>
+                                <state key="normal" title="Purchase">
+                                    <color key="titleColor" white="0.98773601950000001" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="makePurchase:" destination="7ac-JL-fH9" eventType="touchUpInside" id="DdK-ra-iCg"/>
+                                    <segue destination="zsI-Sc-lDk" kind="unwind" unwindAction="unwindToStoreVC:" id="8Qt-JD-dNa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="km3-11-fQ3">
@@ -254,6 +321,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="700" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="438" translatesAutoresizingMaskIntoConstraints="NO" id="WII-JN-KoE">
                                 <rect key="frame" x="0.0" y="64" width="600" height="438"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="720" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhF-lA-0ds">
+                                <rect key="frame" x="544" y="575" width="36" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -261,7 +334,9 @@
                             <constraint firstItem="km3-11-fQ3" firstAttribute="top" secondItem="WII-JN-KoE" secondAttribute="bottom" constant="8" symbolic="YES" id="ApZ-5r-qPD"/>
                             <constraint firstItem="gTQ-gb-msy" firstAttribute="top" secondItem="NpF-Ns-HL2" secondAttribute="bottom" constant="8" id="CH1-Uu-OR7"/>
                             <constraint firstItem="WII-JN-KoE" firstAttribute="top" secondItem="zMe-4j-0P4" secondAttribute="bottom" id="RlO-Lm-wKF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yhF-lA-0ds" secondAttribute="trailing" id="S6g-ot-dGG"/>
                             <constraint firstItem="NpF-Ns-HL2" firstAttribute="top" secondItem="km3-11-fQ3" secondAttribute="bottom" constant="9" id="XSO-jd-mZn"/>
+                            <constraint firstItem="gTQ-gb-msy" firstAttribute="top" secondItem="yhF-lA-0ds" secondAttribute="bottom" constant="8" id="YIX-uj-7Gm"/>
                             <constraint firstItem="WII-JN-KoE" firstAttribute="centerX" secondItem="km3-11-fQ3" secondAttribute="centerX" id="dq2-HE-3LP"/>
                             <constraint firstItem="WII-JN-KoE" firstAttribute="leading" secondItem="Fmq-Ys-ek5" secondAttribute="leading" id="hIz-L5-Cf6"/>
                             <constraint firstItem="km3-11-fQ3" firstAttribute="centerX" secondItem="Fmq-Ys-ek5" secondAttribute="centerX" id="ya4-sv-T9E"/>
@@ -271,11 +346,13 @@
                         <outlet property="itemDescription" destination="km3-11-fQ3" id="UiJ-Qe-XKe"/>
                         <outlet property="itemImage" destination="WII-JN-KoE" id="s1p-9M-Xuc"/>
                         <outlet property="makePurchaseButton" destination="NpF-Ns-HL2" id="obk-3g-TFd"/>
+                        <outlet property="userCreditsLabel" destination="yhF-lA-0ds" id="vjP-7B-cme"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcE-sj-ORS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zsI-Sc-lDk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="293"/>
+            <point key="canvasLocation" x="2001" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ol7-yj-Pma">
