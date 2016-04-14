@@ -53,10 +53,20 @@ class UserPicturesViewController: UITableViewController {
                 dest.username = username
                 dest.db = db
             }
+        }else if segue.identifier == "LibraryToClickSegue" {
+            if let dest = segue.destinationViewController as? PictureClickerViewController {
+                dest.username = username
+                dest.db = db
+                let selectedIndex:Int = self.tableView.indexPathForSelectedRow!.row
+                dest.item_name = pictureData![selectedIndex].1
+                dest.item_location = pictureData![selectedIndex].2
+            }
         }
     }
     
     @IBAction func unwindToUserPicturesVC(segue: UIStoryboardSegue) {
+        pictureData = db!.fetchPictureData(user: username!)
+        self.tableView.reloadData()
     }
     
     
