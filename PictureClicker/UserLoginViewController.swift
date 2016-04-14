@@ -19,6 +19,7 @@ class UserLoginViewController: UIViewController {
         db.addAllPictures()
         //db.insertPictureOwningInstance(pictureId: 5, username: "Will")
         db.testAddPictureOwningInstances()
+        db.createStore()
         //testSelectFromUser(db!)
             
         //testAddPicture(db!)
@@ -65,7 +66,7 @@ class UserLoginViewController: UIViewController {
     /*
      This method allows for the SingleStockView to unwind to this ViewController, which makes the transition fast.
      */
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    @IBAction func unwindToUserLoginVC(segue: UIStoryboardSegue) {
     }
 
 }
