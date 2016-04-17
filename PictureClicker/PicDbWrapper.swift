@@ -23,7 +23,6 @@ class PicDbWrapper{
                                       "username text primary key not null, ",
                                       "password text, ",
                                       "credits int);"].reduce("", combine: +)
-            /* PICTURE*/
             let createPictureRelation = ["create table picture(",
                                          "picture_id integer primary key autoincrement, ",
                                          "picture_name text, ",
@@ -41,18 +40,19 @@ class PicDbWrapper{
                         "pic_id integer, ",
                         "price integer, ",
                         "FOREIGN KEY(pic_id) REFERENCES picture(picture_id));"].reduce("", combine: +)
+            /*
             let createClickInstanceRelation = ["create table click_instance(",
                     "username text, ",
                     "pic_id integer, ",
                     "date text, ",
                     "FOREIGN KEY(username) REFERENCES user(username), ",
                     "FOREIGN KEY(pic_id) REFERENCES picture(picture_id));"].reduce("", combine: +)
-            
+            */
             db.executeStatements(createUserRelation);
             db.executeStatements(createPictureRelation)
             db.executeStatements(createPictureOwningIntanceRelation)
             db.executeStatements(createStoreItemsRelation)
-            db.executeStatements(createClickInstanceRelation)
+            //db.executeStatements(createClickInstanceRelation)
             return db
         }
         return nil
@@ -341,9 +341,13 @@ class PicDbWrapper{
         }
     }
     
-    //must add the add click instance for user and picture
+    func incrementCreditsForUser(user username:String) {
+        let update = ["update user",
+                      "set credits=credits-1",
+                      "where username=\"\(username)\""].reduce("", combine: +)
+        try! db!.executeUpdate(update, values: [])
+    }
     
-    //must check for when the user can click again
     
 }
 
