@@ -17,7 +17,6 @@ class MakePurchaseViewController: UIViewController {
     var item_location:String?
     var price:Int?
     
-    
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemDescription: UILabel!
     @IBOutlet weak var makePurchaseButton: UIButton!
@@ -38,7 +37,7 @@ class MakePurchaseViewController: UIViewController {
             makePurchaseButton.backgroundColor = UIColor.lightGrayColor()
         }
         let userCredits:Int = db!.creditsForUser(user: username!)
-        userCreditsLabel.text =  String(format: "your credits: %d", userCredits)
+        userCreditsLabel.text =  String(format: "your\ncredits: %d", userCredits)
     }
     
     @IBAction func makePurchase(sender: UIButton) {
