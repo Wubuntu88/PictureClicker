@@ -15,7 +15,6 @@
 		BE083E831CBEF1B500987C9E /* MakePurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E821CBEF1B500987C9E /* MakePurchaseViewController.swift */; };
 		BE083E851CC0195000987C9E /* PictureClickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E841CC0195000987C9E /* PictureClickerViewController.swift */; };
 		BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */; };
-		BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */; };
 		BEF1BAF01C8E83AE00B537BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */; };
 		BEF1BAF21C8E83AE00B537BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */; };
 		BEF1BAF51C8E83AE00B537BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAF31C8E83AE00B537BC /* LaunchScreen.storyboard */; };
@@ -40,7 +39,6 @@
 		BE083E841CC0195000987C9E /* PictureClickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureClickerViewController.swift; sourceTree = "<group>"; };
 		BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureClicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BEF1BAEF1C8E83AE00B537BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEF1BAF41C8E83AE00B537BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				BE083E801CBE97C000987C9E /* StoreViewController.swift */,
 				BE083E821CBEF1B500987C9E /* MakePurchaseViewController.swift */,
 				BE083E841CC0195000987C9E /* PictureClickerViewController.swift */,
-				BEF1BAEC1C8E83AE00B537BC /* ViewController.swift */,
 				BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */,
 				BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */,
 				BEF1BAF31C8E83AE00B537BC /* LaunchScreen.storyboard */,
@@ -210,7 +207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF1BB3D1C8E9AF600B537BC /* FMDatabase.m in Sources */,
-				BEF1BAED1C8E83AE00B537BC /* ViewController.swift in Sources */,
 				BE083E831CBEF1B500987C9E /* MakePurchaseViewController.swift in Sources */,
 				BE083E811CBE97C000987C9E /* StoreViewController.swift in Sources */,
 				BE083E731CBB0B6B00987C9E /* UserPicturesViewController.swift in Sources */,
