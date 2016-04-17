@@ -342,8 +342,8 @@ class PicDbWrapper{
     }
     
     func incrementCreditsForUser(user username:String) {
-        let update = ["update user",
-                      "set credits=credits-1",
+        let update = ["update user ",
+                      "set credits=credits+1 ",
                       "where username=\"\(username)\""].reduce("", combine: +)
         try! db!.executeUpdate(update, values: [])
     }
