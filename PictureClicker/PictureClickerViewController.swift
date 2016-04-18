@@ -28,7 +28,6 @@ class PictureClickerViewController: UIViewController {
     @IBAction func tappedOnPicture(sender: UITapGestureRecognizer) {
         db?.incrementCreditsForUser(user: username!)
         itemImage.userInteractionEnabled = false
-        
         countdownUntilNextClick.text = String(format: "%3d", startTime)
         let userCredits:Int = db!.creditsForUser(user: username!)
         userCreditsLabel.text =  String(format: "your\ncredits: %d", userCredits)
