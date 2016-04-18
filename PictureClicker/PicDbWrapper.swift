@@ -54,6 +54,7 @@ class PicDbWrapper{
         }
         return nil
     }
+    
     /*
      * Adds a user to the database with a given password
      * @return true if the addition was successful, false if it would not be inserted
@@ -148,6 +149,7 @@ class PicDbWrapper{
             insertPictureOwningInstance(pictureId: index, username: "Wen")
         }
     }
+    
     /*
      * Adds a predifined list of picture names and file locations of pictures
      * to the database to initialize it.
@@ -305,6 +307,12 @@ class PicDbWrapper{
         return false
     }
     
+    /*
+     * Checks to see if a user has enough credits for a picture
+     * @param0: username:String
+     * @param1: pic_name:String
+     * @return: true if the user has enough credits, false otherwise
+     */
     func userHasEnoughCreditsForPicture(user username:String, picture_name pic_name:String) -> Bool {
         let selectCredits = ["select credits ",
                        "from user ",
@@ -333,6 +341,11 @@ class PicDbWrapper{
         return false
     }
     
+    /*
+     * gets the credits for a user
+     * @param0: username:String
+     * @return: #credits:Int
+     */
     func creditsForUser(user username:String) -> Int{
         let selectCredits = ["select credits ",
             "from user ",
@@ -345,6 +358,12 @@ class PicDbWrapper{
         }
     }
     
+    /*
+     * initiates an insertion into the picture_owning_instance table
+     * @param 0: username:String
+     * @param 1: pic_name:String
+     * @return: true if insertion was successful, false otherwise
+     */
     func makePicturePurchaseForUser(user username:String, picture_name pic_name:String) -> Bool {
         //must get the picture id for the item name
         let select_pic_id = ["select picture_id ",
@@ -382,6 +401,9 @@ class PicDbWrapper{
         }
     }
     
+    /*
+     * Increments the credits in the user table for the given username
+     */
     func incrementCreditsForUser(user username:String) {
         let update = ["update user ",
                       "set credits=credits+1 ",
