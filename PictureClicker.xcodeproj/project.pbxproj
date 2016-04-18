@@ -14,6 +14,7 @@
 		BE083E811CBE97C000987C9E /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E801CBE97C000987C9E /* StoreViewController.swift */; };
 		BE083E831CBEF1B500987C9E /* MakePurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E821CBEF1B500987C9E /* MakePurchaseViewController.swift */; };
 		BE083E851CC0195000987C9E /* PictureClickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE083E841CC0195000987C9E /* PictureClickerViewController.swift */; };
+		BEAFC35C1CC422BD005A43F9 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFC35B1CC422BD005A43F9 /* CreateAccountViewController.swift */; };
 		BEF1BAEB1C8E83AE00B537BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */; };
 		BEF1BAF01C8E83AE00B537BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAEE1C8E83AE00B537BC /* Main.storyboard */; };
 		BEF1BAF21C8E83AE00B537BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF1BAF11C8E83AE00B537BC /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		BE083E801CBE97C000987C9E /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BE083E821CBEF1B500987C9E /* MakePurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePurchaseViewController.swift; sourceTree = "<group>"; };
 		BE083E841CC0195000987C9E /* PictureClickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureClickerViewController.swift; sourceTree = "<group>"; };
+		BEAFC35B1CC422BD005A43F9 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		BEF1BAE71C8E83AE00B537BC /* PictureClicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureClicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEF1BAEF1C8E83AE00B537BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				BEF1BAEA1C8E83AE00B537BC /* AppDelegate.swift */,
 				BE083E701CBB05F700987C9E /* PicDbWrapper.swift */,
 				BE083E6E1CBA07A700987C9E /* UserLoginViewController.swift */,
+				BEAFC35B1CC422BD005A43F9 /* CreateAccountViewController.swift */,
 				BE083E721CBB0B6B00987C9E /* UserPicturesViewController.swift */,
 				BE083E801CBE97C000987C9E /* StoreViewController.swift */,
 				BE083E821CBEF1B500987C9E /* MakePurchaseViewController.swift */,
@@ -211,6 +214,7 @@
 				BE083E811CBE97C000987C9E /* StoreViewController.swift in Sources */,
 				BE083E731CBB0B6B00987C9E /* UserPicturesViewController.swift in Sources */,
 				BEF1BB411C8E9AF600B537BC /* FMResultSet.m in Sources */,
+				BEAFC35C1CC422BD005A43F9 /* CreateAccountViewController.swift in Sources */,
 				BE083E711CBB05F700987C9E /* PicDbWrapper.swift in Sources */,
 				BE083E851CC0195000987C9E /* PictureClickerViewController.swift in Sources */,
 				BEF1BB3F1C8E9AF600B537BC /* FMDatabasePool.m in Sources */,
