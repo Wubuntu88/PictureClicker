@@ -17,22 +17,14 @@ class UserLoginViewController: UIViewController {
         super.viewDidLoad()
         db.testAddUsers()
         db.addAllPictures()
-        //db.insertPictureOwningInstance(pictureId: 5, username: "Will")
         db.testAddPictureOwningInstances()
         db.createStore()
-        //testSelectFromUser(db!)
-            
-        //testAddPicture(db!)
-        //testSelectFromPicture(db!)
-        
     }
     
     //IBOutlets
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBAction func Login(sender: AnyObject) {
         
     }
@@ -56,6 +48,12 @@ class UserLoginViewController: UIViewController {
             if let destination = segue.destinationViewController as? UINavigationController{
                 if let dest = destination.topViewController as? UserPicturesViewController{
                     dest.username = username
+                    dest.db = db
+                }
+            }
+        }else if segue.identifier == "LoginToCreateAccountSegue"{
+            if let destination = segue.destinationViewController as? UINavigationController {
+                if let dest = destination.topViewController as? CreateAccountViewController {
                     dest.db = db
                 }
             }

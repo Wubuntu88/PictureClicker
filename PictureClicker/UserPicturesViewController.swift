@@ -15,14 +15,9 @@ class UserPicturesViewController: UITableViewController {
     var db:PicDbWrapper?
     var pictureData:[(Int, String, String)]?//id, name, filename
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
-    }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
